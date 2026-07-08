@@ -1,0 +1,796 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Madurai Pedal Pushers - Cycling Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tdf-yellow: #FFE500;
+            --tdf-black: #0E0E10;
+            --tdf-dark: #1A1A1F;
+            --tdf-gray: #2D2D35;
+            --tdf-muted: #8E8E9F;
+            --tdf-text: #FFFFFF;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--tdf-black);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(255, 229, 0, 0.15) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, rgba(20, 127, 125, 0.15) 0px, transparent 40%),
+                linear-gradient(135deg, #0e0e10 0%, #1c1c22 100%);
+            color: var(--tdf-text);
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span {
+            color: var(--tdf-yellow);
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--tdf-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--tdf-yellow);
+        }
+        .login-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 99px;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            background: var(--tdf-yellow);
+            color: var(--tdf-black);
+            border-color: var(--tdf-yellow);
+            box-shadow: 0 4px 14px rgba(255, 229, 0, 0.25);
+        }
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+        }
+        .eyebrow {
+            color: var(--tdf-yellow);
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-size: clamp(38px, 8vw, 84px);
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0 0 24px 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+        .hero-desc {
+            font-size: clamp(16px, 2.5vw, 22px);
+            color: var(--tdf-muted);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cta-primary {
+            background: var(--tdf-yellow);
+            color: var(--tdf-black);
+            font-weight: 900;
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 24px rgba(255, 229, 0, 0.2);
+        }
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            background: white;
+            box-shadow: 0 10px 28px rgba(255, 255, 255, 0.2);
+        }
+        .cta-secondary {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            font-weight: 900;
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin: 0 0 8px 0;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--tdf-yellow);
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            color: var(--tdf-muted);
+            margin: 12px 0 40px 0;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 32px;
+        }
+        .media-card {
+            background: var(--tdf-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .insta-card {
+            background: linear-gradient(135deg, #1c1a24 0%, #111015 100%);
+            border: 1px solid rgba(225, 48, 108, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            position: relative;
+        }
+        .insta-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .insta-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            padding: 2.5px;
+            background: linear-gradient(220deg, #F91E79, #FFDF00, #8A3AB9, #FCAF45);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .insta-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #1c1a24;
+        }
+        .insta-meta {
+            text-align: left;
+        }
+        .insta-name {
+            font-weight: 900;
+            font-size: 15px;
+            color: white;
+            margin: 0;
+        }
+        .insta-handle {
+            color: #e1306c;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .insta-reel-embed {
+            background: rgba(0,0,0,0.4);
+            border-radius: 12px;
+            margin: 20px 0;
+            padding: 16px;
+            text-align: center;
+            border: 1px dashed rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        .insta-play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #e1306c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .insta-play-btn:hover {
+            transform: scale(1.1);
+            background: white;
+            color: #e1306c;
+        }
+        .challenge-banner {
+            background: rgba(255, 229, 0, 0.05);
+            border: 1px solid var(--tdf-yellow);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .challenge-badge {
+            background: var(--tdf-yellow);
+            color: var(--tdf-black);
+            font-weight: 900;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .newsletter-section {
+            background: var(--tdf-dark);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .newsletter-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .newsletter-card:hover {
+            border-color: var(--tdf-yellow);
+            transform: translateY(-4px);
+        }
+        .news-tag {
+            color: var(--tdf-yellow);
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .news-title {
+            font-size: 18px;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+        .news-desc {
+            color: var(--tdf-muted);
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        footer {
+            background: #09090b;
+            padding: 60px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .social-link-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .social-link:hover {
+            background: var(--tdf-yellow);
+            color: var(--tdf-black);
+            border-color: var(--tdf-yellow);
+            transform: translateY(-2px);
+        }
+        .decor-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            z-index: 1;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        .stage-line {
+            stroke: var(--tdf-yellow);
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 3s ease-out forwards;
+        }
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+        @media(max-width: 768px) {
+            .media-grid, .challenge-banner, .newsletter-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero { padding: 40px 16px; }
+        }
+        
+        /* Animated Logo */
+        .logo-animated {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+        .wheel-spin-left {
+            transform-origin: 30px 45px;
+            animation: spin-anim 1.2s linear infinite;
+        }
+        .wheel-spin-right {
+            transform-origin: 80px 45px;
+            animation: spin-anim 1.2s linear infinite;
+        }
+        .pedal-spin {
+            transform-origin: 55px 45px;
+            animation: spin-anim 1.2s linear infinite;
+        }
+        @keyframes spin-anim {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-animated">
+                <svg class="bike-svg" viewBox="0 0 100 60" width="36" height="22">
+                    <path d="M 30,45 L 48,20 L 70,20 L 80,45 M 48,20 L 80,45 M 30,45 L 60,45 L 48,20" stroke="var(--tdf-yellow)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <path d="M 70,20 L 73,12 L 80,12" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" />
+                    <path d="M 45,17 L 53,17" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" />
+                    <g class="wheel-spin-left">
+                        <circle cx="30" cy="45" r="12" stroke="white" stroke-width="2.5" fill="none" />
+                        <line x1="30" y1="33" x2="30" y2="57" stroke="white" stroke-width="1.5" />
+                        <line x1="18" y1="45" x2="42" y2="45" stroke="white" stroke-width="1.5" />
+                    </g>
+                    <g class="wheel-spin-right">
+                        <circle cx="80" cy="45" r="12" stroke="white" stroke-width="2.5" fill="none" />
+                        <line x1="80" y1="33" x2="80" y2="57" stroke="white" stroke-width="1.5" />
+                        <line x1="68" y1="45" x2="92" y2="45" stroke="white" stroke-width="1.5" />
+                    </g>
+                    <g class="pedal-spin">
+                        <line x1="55" y1="45" x2="63" y2="37" stroke="var(--tdf-yellow)" stroke-width="3" />
+                        <line x1="55" y1="45" x2="47" y2="53" stroke="var(--tdf-yellow)" stroke-width="3" />
+                        <circle cx="55" cy="45" r="4.5" fill="var(--tdf-yellow)" />
+                    </g>
+                </svg>
+            </div>
+            <span>Pedal Pushers</span>
+        </div>
+        <div class="nav-links">
+            <a href="#events" class="nav-link">Events</a>
+            <a href="#media" class="nav-link">Media Hub</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="https://cycling-cloud-server.onrender.com/login" class="login-btn">Console Login</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <svg class="decor-svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <path class="stage-line" d="M0,180 L180,180 L320,120 L480,160 L620,40 L780,140 L960,30 L1120,160 L1280,80 L1440,150"></path>
+        </svg>
+        <div class="eyebrow">Madurai Cycling Community</div>
+        <h1>Ride Free.<br><span style="color: var(--tdf-yellow);">Push Limits.</span></h1>
+        <p class="hero-desc">Join the most active cycling network in Madurai. Challenge your limits, connect your Strava, and rise on the leaderboard.</p>
+        <div class="cta-group">
+            <a href="https://t.me/MaduraiPedal_bot" target="_blank" class="cta-primary">🤖 Connect Telegram Bot</a>
+            <a href="#events" class="cta-secondary">Explore Stage Challenges</a>
+        </div>
+    </div>
+
+    <div class="section-container" id="events">
+        <h2 class="section-title">Stage Challenges</h2>
+        <div class="section-subtitle">Active and Upcoming Events</div>
+        <div id="events-container">
+            <div style="text-align: center; padding: 48px; color: var(--tdf-muted);">Loading active challenges...</div>
+        </div>
+    </div>
+
+    <div class="section-container" id="media">
+        <h2 class="section-title">Media Hub</h2>
+        <div class="section-subtitle">Latest Video Logs & Reels</div>
+        
+        <div class="media-grid">
+            <div class="media-card">
+                <div class="video-wrapper">
+                    <iframe id="yt-iframe" src="https://www.youtube.com/embed/Tm59cRzlF5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 900; margin: 0 0 8px 0; text-transform: uppercase;">Latest YouTube Vlog</h3>
+                <p style="color: var(--tdf-muted); font-size: 13px; margin: 0 0 16px 0; line-height: 1.5;">Check out the latest ride adventure, setups, and cycling logs on our channel.</p>
+                <a href="https://www.youtube.com/@TwoWheelFreedom-1" target="_blank" style="align-self: flex-start; color: var(--tdf-yellow); font-weight: 900; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--tdf-yellow); padding-bottom: 2px;">Subscribe on YouTube →</a>
+            </div>
+            
+            <div id="insta-container" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DCnh9WKIfAY/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DCnh9WKIfAY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DCnh9WKIfAY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Arun Muthu Kumar K (@arunmuthukumar_k)</a></p></div></blockquote>
+                <script async src="//www.instagram.com/embed.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="section-title">Cycling Newsletter</h2>
+        <div class="section-subtitle">Latest Updates & Ride Notes</div>
+        
+        <div class="newsletter-section">
+            <h3 style="font-size: 24px; font-weight: 900; margin: 0 0 8px 0; text-transform: uppercase;">Weekly Stage Report</h3>
+            <p style="color: var(--tdf-muted); margin: 0 0 24px 0; font-size: 14px;">Stay informed with the latest tech logs, local route reviews, and international cycling briefings.</p>
+            
+            <div class="newsletter-grid" id="newsletter-grid">
+                <div class="newsletter-card">
+                    <span class="news-tag">Training Tips</span>
+                    <h4 class="news-title">Perfecting Your Cadence</h4>
+                    <p class="news-desc">How spinning at 85-95 RPM improves aerobic performance and saves your leg muscles on long endurance rides.</p>
+                </div>
+                
+                <div class="newsletter-card">
+                    <span class="news-tag">Local Routes</span>
+                    <h4 class="news-title">Alagar Kovil Hill Climb</h4>
+                    <p class="news-desc">A deep dive into Madurai's favourite weekend climb. Best times, safety tips, and elevation profiles analyzed.</p>
+                </div>
+                
+                <div class="newsletter-card">
+                    <span class="news-tag">Tour Briefing</span>
+                    <h4 class="news-title">Tour de France Stages</h4>
+                    <p class="news-desc">Updates on key mountain stages, green and yellow jersey contenders, and technical setups used by pros.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container" id="about" style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; padding-top: 80px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+            <div>
+                <h2 class="section-title">About the Community</h2>
+                <div class="section-subtitle">Madurai Pedal Pushers</div>
+                <p style="color: var(--tdf-muted); line-height: 1.8; font-size: 14px; margin-bottom: 24px;">We are a passionate group of amateur and professional cyclists based in Madurai, India. Our goal is to promote cycling as a sport, lifestyle, and community engagement. By connecting Strava API logs to our group telegram bot, we track and display standings, climb ratios, and logs to challenge our limits week over week.</p>
+            </div>
+            
+            <div style="background: var(--tdf-dark); border: 1px solid rgba(255,255,255,0.05); padding: 32px; border-radius: 16px;">
+                <h3 style="margin-top: 0; font-size: 20px; font-weight: 900; text-transform: uppercase;">Contact us</h3>
+                <p style="color: var(--tdf-muted); font-size: 13px; margin-bottom: 20px;">Have questions about joining, linking your Strava account, or listing local events? Connect with us on social channels or the group chat!</p>
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>📧 Email:</span>
+                    <span style="color: var(--tdf-yellow);"><a href="mailto:maduraipedalpushers@gmail.com" style="color:var(--tdf-yellow); text-decoration:none;">maduraipedalpushers@gmail.com</a></span>
+                </div>
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <span>📍 Location:</span>
+                    <span style="color: var(--tdf-yellow);">Madurai, Tamil Nadu, India</span>
+                </div>
+                
+                <h4 style="margin: 20px 0 10px 0; font-size: 14px; font-weight: 900; text-transform: uppercase; color: var(--tdf-muted); letter-spacing: 0.5px;">Our Handles</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tdf-yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <span>Telegram:</span>
+                        <span style="color: var(--tdf-yellow);"><a href="https://t.me/MaduraiPedal_bot" target="_blank" style="color:var(--tdf-yellow); text-decoration:none;">@MaduraiPedal_bot</a></span>
+                    </div>
+                    <div style="font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tdf-yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>Instagram:</span>
+                        <span style="color: var(--tdf-yellow);"><a href="https://www.instagram.com/arunmuthukumar_k" target="_blank" style="color:var(--tdf-yellow); text-decoration:none;">@arunmuthukumar_k</a></span>
+                    </div>
+                    <div style="font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tdf-yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5a4 4 0 0 0 4-4v-1a4 4 0 0 0-4-4h-5c-2.76 0-5 2.24-5 5s2.24 5 5 5h3"></path></svg>
+                        <span>Threads:</span>
+                        <span style="color: var(--tdf-yellow);"><a href="https://www.threads.net/@arunmuthukumar_k" target="_blank" style="color:var(--tdf-yellow); text-decoration:none;">@arunmuthukumar_k</a></span>
+                    </div>
+                    <div style="font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tdf-yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        <span>YouTube:</span>
+                        <span style="color: var(--tdf-yellow);"><a href="https://www.youtube.com/@TwoWheelFreedom-1" target="_blank" style="color:var(--tdf-yellow); text-decoration:none;">@TwoWheelFreedom-1</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo" style="justify-content: center;">
+            <div class="logo-animated">
+                <svg class="bike-svg" viewBox="0 0 100 60" width="36" height="22">
+                    <path d="M 30,45 L 48,20 L 70,20 L 80,45 M 48,20 L 80,45 M 30,45 L 60,45 L 48,20" stroke="var(--tdf-yellow)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <path d="M 70,20 L 73,12 L 80,12" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" />
+                    <path d="M 45,17 L 53,17" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" />
+                    <g class="wheel-spin-left">
+                        <circle cx="30" cy="45" r="12" stroke="white" stroke-width="2.5" fill="none" />
+                        <line x1="30" y1="33" x2="30" y2="57" stroke="white" stroke-width="1.5" />
+                        <line x1="18" y1="45" x2="42" y2="45" stroke="white" stroke-width="1.5" />
+                    </g>
+                    <g class="wheel-spin-right">
+                        <circle cx="80" cy="45" r="12" stroke="white" stroke-width="2.5" fill="none" />
+                        <line x1="80" y1="33" x2="80" y2="57" stroke="white" stroke-width="1.5" />
+                        <line x1="68" y1="45" x2="92" y2="45" stroke="white" stroke-width="1.5" />
+                    </g>
+                    <g class="pedal-spin">
+                        <line x1="55" y1="45" x2="63" y2="37" stroke="var(--tdf-yellow)" stroke-width="3" />
+                        <line x1="55" y1="45" x2="47" y2="53" stroke="var(--tdf-yellow)" stroke-width="3" />
+                        <circle cx="55" cy="45" r="4.5" fill="var(--tdf-yellow)" />
+                    </g>
+                </svg>
+            </div>
+            <span>Pedal Pushers</span>
+        </div>
+        <p style="color: var(--tdf-muted); font-size: 12px; margin: 16px 0;">© 2026 Madurai Pedal Pushers. Built for athlete by an athlete.</p>
+        
+        <div class="social-link-row">
+            <a href="https://t.me/MaduraiPedal_bot" target="_blank" class="social-link" title="Telegram Bot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </a>
+            <a href="https://www.instagram.com/arunmuthukumar_k" target="_blank" class="social-link" title="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://www.threads.net/@arunmuthukumar_k" target="_blank" class="social-link" title="Threads">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5a4 4 0 0 0 4-4v-1a4 4 0 0 0-4-4h-5c-2.76 0-5 2.24-5 5s2.24 5 5 5h3"></path></svg>
+            </a>
+            <a href="https://www.youtube.com/@TwoWheelFreedom-1" target="_blank" class="social-link" title="YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        fetch('https://cycling-cloud-server.onrender.com/api/active-challenge')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('events-container');
+                if (data) {
+                    container.innerHTML = `
+                        <div class="challenge-banner">
+                            <div>
+                                <div class="challenge-badge">Active Challenge</div>
+                                <h3 style="font-size: 24px; font-weight: 900; margin: 0 0 12px 0;">${data.name}</h3>
+                                <p style="color: var(--tdf-muted); margin: 0 0 20px 0; line-height: 1.6; font-size: 14px;">${data.description || 'No description provided.'}</p>
+                                <div style="font-size: 14px; font-weight: bold;">
+                                    ⏱ Duration: <span style="color: var(--tdf-yellow);">${data.start_date}</span> to <span style="color: var(--tdf-yellow);">${data.end_date}</span>
+                                </div>
+                            </div>
+                            <div style="text-align: center; background: rgba(0,0,0,0.3); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                                <div style="font-size: 12px; font-weight: 900; color: var(--tdf-yellow); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Standings Updated Live</div>
+                                <div style="font-size: 32px; font-weight: 900; color: white;">Strava Sync</div>
+                                <p style="font-size: 12px; color: var(--tdf-muted); margin: 8px 0 16px 0;">Accept this challenge in our bot to auto-sync your activities!</p>
+                                <a href="https://t.me/MaduraiPedal_bot" target="_blank" style="display:inline-block; background: var(--tdf-yellow); color: black; font-weight: 900; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Join Challenge</a>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `
+                        <div style="background: var(--tdf-dark); border: 1px dashed rgba(255,255,255,0.1); border-radius: 16px; padding: 48px; text-align: center; color: var(--tdf-muted);">
+                            🚴 No group challenges scheduled at the moment. Keep pushing pedals!
+                        </div>
+                    `;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('events-container').innerHTML = `
+                    <div style="background: var(--tdf-dark); border: 1px dashed rgba(255,255,255,0.1); border-radius: 16px; padding: 48px; text-align: center; color: var(--tdf-muted);">
+                        🚴 No group challenges scheduled at the moment. Keep pushing pedals!
+                    </div>
+                `;
+            });
+
+
+        // Fetch Media Hub configurations (YouTube and Instagram links)
+        fetch('https://cycling-cloud-server.onrender.com/api/media-hub')
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    if (data.youtube_url) {
+                        document.getElementById('yt-iframe').src = data.youtube_url;
+                    }
+                    if (data.instagram_url) {
+                        const cleanUrl = data.instagram_url.split('?')[0];
+                        const container = document.getElementById('insta-container');
+                        if (container) {
+                            container.innerHTML = `
+                                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${cleanUrl}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#1A1A1F; border:1px solid rgba(255,255,255,0.05); border-radius:16px; box-shadow:none; margin: 0; padding:0; width:100%;">
+                                    <div style="padding:16px;">
+                                        <a href="${cleanUrl}?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#1A1A1F; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                                            <div style=" display: flex; flex-direction: row; align-items: center;">
+                                                <div style="background-color: #2D2D35; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                                                <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                                    <div style=" background-color: #2D2D35; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                                                    <div style=" background-color: #2D2D35; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                                                </div>
+                                            </div>
+                                            <div style="padding: 19% 0;"></div>
+                                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-511.000000, -20.000000)" fill="#FFFFFF">
+                                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div style="padding-top: 8px;">
+                                                <div style=" color:#FFE500; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                                            </div>
+                                            <div style="padding: 12.5% 0;"></div>
+                                            <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                                                <div>
+                                                    <div style="background-color: #2D2D35; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+                                                    <div style="background-color: #2D2D35; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+                                                    <div style="background-color: #2D2D35; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+                                                </div>
+                                                <div style="margin-left: 8px;">
+                                                    <div style=" background-color: #2D2D35; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+                                                    <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #2D2D35; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+                                                </div>
+                                                <div style="margin-left: auto;">
+                                                    <div style=" width: 0px; border-top: 8px solid #2D2D35; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+                                                    <div style=" background-color: #2D2D35; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+                                                    <div style=" width: 0; height: 0; border-top: 8px solid #2D2D35; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                                                <div style=" background-color: #2D2D35; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+                                                <div style=" background-color: #2D2D35; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+                                            </div>
+                                        </a>
+                                        <p style=" color:#8E8E9F; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                                            <a href="${cleanUrl}?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#8E8E9F; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Arun Muthu Kumar K (@arunmuthukumar_k)</a>
+                                        </p>
+                                    </div>
+                                </blockquote>
+                            `;
+                            if (window.instgrm) {
+                                window.instgrm.Embeds.process();
+                            } else {
+                                const s = document.createElement('script');
+                                s.async = true;
+                                s.src = '//www.instagram.com/embed.js';
+                                document.body.appendChild(s);
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(err => console.error("Error loading media-hub settings:", err));
+
+        // Fetch Newsletter articles (auto-aggregated RSS feeds)
+        fetch('https://cycling-cloud-server.onrender.com/api/newsletters')
+            .then(res => res.json())
+            .then(articles => {
+                const grid = document.getElementById('newsletter-grid');
+                if (articles && articles.length > 0) {
+                    grid.innerHTML = articles.map(art => `
+                        <div class="newsletter-card" style="cursor: pointer;" onclick="window.open('${art.link}', '_blank')">
+                            <span class="news-tag">${art.source}</span>
+                            <h4 class="news-title">${art.title}</h4>
+                            <p class="news-desc">${art.description || 'Click to read full article online.'}</p>
+                        </div>
+                    `).join('');
+                }
+            })
+            .catch(err => console.error("Error loading newsletter feed:", err));
+    </script>
+</body>
+</html>
