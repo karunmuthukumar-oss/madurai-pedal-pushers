@@ -519,7 +519,7 @@
             <a href="#events" class="nav-link">Events</a>
             <a href="#media" class="nav-link">Media Hub</a>
             <a href="#about" class="nav-link">About</a>
-            <a href="https://cycling-cloud-server.onrender.com/login" class="login-btn">Console Login</a>
+            <a href="https://cycling-backend-718659144620.us-central1.run.app/login" class="login-btn">Console Login</a>
         </div>
     </header>
 
@@ -747,7 +747,7 @@
     </footer>
 
     <script>
-        fetch('https://cycling-cloud-server.onrender.com/api/active-challenge')
+        fetch('https://cycling-backend-718659144620.us-central1.run.app/api/active-challenge')
             .then(res => res.json())
             .then(data => {
                 const container = document.getElementById('events-container');
@@ -789,7 +789,7 @@
 
 
         // Fetch Media Hub configurations (YouTube, Instagram, and Google Drive links)
-        fetch('https://cycling-cloud-server.onrender.com/api/media-hub')
+        fetch('https://cycling-backend-718659144620.us-central1.run.app/api/media-hub')
             .then(res => res.json())
             .then(data => {
                 if (data) {
@@ -825,7 +825,7 @@
             .catch(err => console.error("Error loading media-hub settings:", err));
 
         // Fetch Newsletter articles (auto-aggregated RSS feeds)
-        fetch('https://cycling-cloud-server.onrender.com/api/newsletters')
+        fetch('https://cycling-backend-718659144620.us-central1.run.app/api/newsletters')
             .then(res => res.json())
             .then(articles => {
                 const grid = document.getElementById('newsletter-grid');
