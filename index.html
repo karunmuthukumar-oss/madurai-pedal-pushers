@@ -547,15 +547,29 @@
     <div class="section-container" id="media">
         <h2 class="section-title">Media Hub</h2>
         <div class="section-subtitle">Latest Video Logs & Reels</div>
-        
         <div class="media-grid">
-            <div class="media-card">
+            <div class="media-card" style="display: flex; flex-direction: column; justify-content: flex-start; height: 100%;">
                 <div class="video-wrapper">
                     <iframe id="yt-iframe" src="https://www.youtube.com/embed/Tm59cRzlF5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <h3 style="font-size: 20px; font-weight: 900; margin: 0 0 8px 0; text-transform: uppercase;">Latest YouTube Vlog</h3>
                 <p style="color: var(--tdf-muted); font-size: 13px; margin: 0 0 16px 0; line-height: 1.5;">Check out the latest ride adventure, setups, and cycling logs on our channel.</p>
-                <a href="https://www.youtube.com/@TwoWheelFreedom-1" target="_blank" style="align-self: flex-start; color: var(--tdf-yellow); font-weight: 900; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--tdf-yellow); padding-bottom: 2px;">Subscribe on YouTube →</a>
+                <a href="https://www.youtube.com/@TwoWheelFreedom-1" target="_blank" style="align-self: flex-start; color: var(--tdf-yellow); font-weight: 900; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--tdf-yellow); padding-bottom: 2px; margin-bottom: 16px;">Subscribe on YouTube →</a>
+                
+                <!-- AI Insights Section to fill empty space -->
+                <div id="yt-ai-insights" style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed rgba(255,255,255,0.1); text-align: left; display: none;">
+                    <div style="font-size: 11px; font-weight: 900; color: var(--tdf-yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 4px;">
+                        <span>🤖</span> AI Video Insights
+                    </div>
+                    <h4 id="yt-ai-title" style="margin: 0 0 8px 0; font-size: 14px; color: #ffffff; font-weight: 700; line-height: 1.4;">Video Title</h4>
+                    <p id="yt-ai-summary" style="font-size: 12px; color: var(--tdf-muted); margin: 0 0 12px 0; line-height: 1.5;"></p>
+                    
+                    <div style="font-size: 11px; font-weight: 900; color: var(--tdf-yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;">📍 Locations Featured</div>
+                    <div id="yt-ai-locations" style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;"></div>
+                    
+                    <div style="font-size: 11px; font-weight: 900; color: var(--tdf-yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;">📋 Key Highlights</div>
+                    <ul id="yt-ai-highlights" style="font-size: 12px; color: var(--tdf-muted); padding-left: 18px; margin: 0; line-height: 1.6;"></ul>
+                </div>
             </div>
             
             <div id="insta-container" style="width: 100%; display: flex; justify-content: center;">
@@ -795,6 +809,27 @@
                 if (data) {
                     if (data.youtube_url) {
                         document.getElementById('yt-iframe').src = data.youtube_url;
+                    }
+                    if (data.youtube_ai) {
+                        const ai = data.youtube_ai;
+                        document.getElementById('yt-ai-title').innerText = ai.title || '';
+                        document.getElementById('yt-ai-summary').innerText = ai.summary || '';
+                        
+                        const locsArea = document.getElementById('yt-ai-locations');
+                        if (locsArea && ai.locations) {
+                            locsArea.innerHTML = ai.locations.map(loc => `
+                                <span style="font-size: 11px; color: var(--tdf-yellow); border: 1px solid rgba(255, 229, 0, 0.3); border-radius: 4px; padding: 2px 8px; font-weight: 700; background: rgba(255, 229, 0, 0.05);">${loc}</span>
+                            `).join('');
+                        }
+                        
+                        const highlightsArea = document.getElementById('yt-ai-highlights');
+                        if (highlightsArea && ai.highlights) {
+                            highlightsArea.innerHTML = ai.highlights.map(hl => `
+                                <li style="margin-bottom: 6px;">${hl}</li>
+                            `).join('');
+                        }
+                        
+                        document.getElementById('yt-ai-insights').style.display = 'block';
                     }
                     if (data.instagram_url) {
                         const embedArea = document.getElementById('insta-reel-embed');
