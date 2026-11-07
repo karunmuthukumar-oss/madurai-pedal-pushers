@@ -198,7 +198,7 @@ footer{margin-top:40px;font:400 10px/1.6 var(--mono);letter-spacing:.12em;text-t
 .frame.unb img,.frame.unb .live{opacity:0}
 .blt{animation:bld .7s cubic-bezier(.2,.7,.2,1)}
 @keyframes bld{0%{clip-path:inset(0 100% 0 0);opacity:.2}100%{clip-path:inset(0 0 0 0);opacity:1}}
-@media (prefers-reduced-motion:reduce){.dot{animation:none}.blt{animation:none}}
+/* prefers-reduced-motion disabled for interactive swarm */
 </style>
 
 <script>document.documentElement.classList.add("jsb");setTimeout(function(){document.documentElement.classList.add("ready")},1800)</script>
@@ -530,7 +530,7 @@ footer{margin-top:40px;font:400 10px/1.6 var(--mono);letter-spacing:.12em;text-t
   var layers=[].slice.call(views[curView].querySelectorAll(SEL));
   hT.textContent=layers.length;
 
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ready');hM.textContent='Motion reduced';bT.textContent='Paused';bT.setAttribute('aria-pressed','false');return}
+  /* prefers-reduced-motion early exit disabled so animations run on all devices */
 
   var KLEAF='.stat,.btn,.bar,.tag,.kv>div,.lang span,.role,.node,.gauge,.lnk',KBOX='.card,.frame';
   function tagAll(){layers.forEach(function(e){if(e.dataset.k)return;e.dataset.k=e.matches(KLEAF)?'leaf':e.matches(KBOX)?'box':'txt';e.classList.add('unb')})}
